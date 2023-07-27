@@ -3,36 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <title>Five Day Weather Application</title>
   </head>
   <body>
-    <div class="hero">
-      <h1>Five Day Forecast</h1>
-    </div>
+    <section class="banner hero is-small is-outlined">
+      <div class="has-text-centered">
+        <h1 class="title">Five Day Forecast</h1>
+        <p class="subtitle">Forecast Subtitle</p>
+      </div>
+    </section>
 
-    <div class="searchBox">
-      <h1>Search Box</h1>
-      <div class="searchBox"></div>
-      <button class="searchBtn">Search</button>
-      <div class="cityOne">city 1</div>
-      <div class="cityTwo">city 2</div>
-      <div class="cityThree">city 3</div>
-      <div class="cityFour">city 4</div>
-      <div class="cityFive">city 5</div>
-    </div>
+    <section class="columns">
+        <div class="searchBox column is-3">
+        <div class="box has-text-centered">
+          <h1>Search Box</h1>
+          <div class="input"></div>
+          <button
+            class="button is-fullwidth is-outlined"
+            type="submit"
+            value="Submit input"
+          >
+            Search
+          </button>
+        </div>
+        <div class="buttons">
+          <div class="button is-small is-fullwidth" id="cityOne">city 1</div>
+          <div class="button is-small is-fullwidth" id="cityTwo">city 2</div>
+          <div class="button is-small is-fullwidth" id="cityThree">city 3</div>
+          <div class="button is-small is-fullwidth" id="cityFour">city 4</div>
+          <div class="button is-small is-fullwidth" id="cityFive">city 5</div>
+        </div>
+        </div>
+        </div>
 
-    <div class="currentWeather">
-      <h1>Current weather</h1>
-    </div>
+    <div class="column has-text-centered">
+      <div class="currentWeather">
+        <h1>Current weather</h1>
+      </div>
+    
 
-    <div class="fiveDay">
-      <h2>Five Day Forecast</h2>
+    <section class="fiveDay section">
+        <div class="content">
+            <h2>Five Day Forecast</h2>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="box">day 1</div>
+            </div>
+            <div class="column">
+                <div class="box">day 2</div>
+            </div>
+            <div class="column">
+                <div class="box">day 3</div>
+            </div>
+            <div class="column">
+                <div class="box">day 4</div>
+            </div>
+            <div class="column">
+                <div class="box">day 5</div>
+            </div>
+        </div>
+        </div>
     </div>
+</section>
 
-    <div class="dayOne">day 1</div>
-    <div class="dayTwo">day 2</div>
-    <div class="dayThree">day 3</div>
-    <div clas="dayFour">day 4</div>
-    <div class="dayFive">day 5</div>
   </body>
 </html>
