@@ -1,0 +1,57 @@
+:root {
+  --main: #ffc34d;
+  --darkacc: #cc8800;
+}
+
+body {
+  background-color: floralwhite;
+}
+
+.banner {
+  background-color: var(--main);
+  border: 6px solid var(--darkacc);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 25px;
+  font-family: "Merriweather Sans";
+}
+
+.searchBox {
+  background-color: var(--main);
+  border: 6px solid var(--darkacc);
+  border-radius: 10px;
+  margin: 10px;
+  margin-left: 50px;
+  font-family: "merriweather sans";
+}
+
+.currentWeather {
+  background-color: var(--main);
+  border: 6px solid var(--darkacc);
+  border-radius: 10px;
+  margin: 10px;
+  margin-right: 50px;
+  padding: 25px;
+  font-family: "merriweather sans";
+}
+.fiveDay {
+  background-color: var(--main);
+  border: 6px solid var(--darkacc);
+  border-radius: 10px;
+  margin: 10px;
+  margin-right: 50px;
+  font-family: "merriweather sans";
+}
+
+.content {
+  font-size: 12px;
+  margin-top: -25px;
+  font-family: "merriweather sans";
+}
+
+.box {
+  border: 3px solid var(--darkacc);
+  border-radius: 3px;
+  margin-top: 10px;
+  font-family: "merriweather sans";
+}
