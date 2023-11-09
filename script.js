@@ -24,6 +24,10 @@ let month = date.getMonth();
 let year = date.getFullYear();
 let currentDate = `${month}/${day}/${year}`;
 let storedCities = [];
+let storedTemps = [];
+let storedWinds = [];
+let storedHumids = [];
+let storedDates = [];
 
 searchButton.addEventListener("click", getLocationAPI);
 
@@ -72,60 +76,16 @@ function getWeatherAPI(lat,lon) {
     })
     .then(function (data) {
       console.log(data);
-// setting the cities to be saved to local storage
-      function setCity() {
-        let city = data.city.name
-        if (storedCities !== null) {
-          storedCities.push(city);
-          localStorage.setItem("storedCities", JSON.stringify(storedCities));
-        }
-// this bracket closes setCity()
-      };
-    setCity();
-// getting the cities saved to local storage
-      function getCity() {
-          if (JSON.parse(localStorage.getItem("storedCities")) !== null) {
-            cities = JSON.parse(localStorage.getItem("storedCities"));
-          for (let i=0; i < storedCities.length; i++) {
-            let cityEl = $("<p>");
-              if (savedCityZero === null) {
-                cityEl = storedCities[i];
-                savedCityZero.append(cityEl);
-              } else if (savedCityOne === null) {
-                cityEl = storedCities[i];
-                savedCityOne.append(cityEl);
-              } else if (savedCityTwo === null) {
-                cityEl = storedCities[i];
-                savedCityTwo.append(cityEl);
-              } else if (savedCityThree === null) {
-                cityEl = storedCities[i];
-                savedCityThree.append(cityEl);
-              } else {
-                cityEl = storedCities[i];
-                savedCityFour.append(cityEl);
-// this bracket closes the if/else statement            
-              }
-//this bracket closes the for loop
-          }
-// this bracket closes the parent if statement
-          }
-// this bracket closes getCity()
-      }
-    getCity();
-// adding the city name to the button
-      savedCityZero.textContent = storedCities[0];
-      savedCityOne.textContent = storedCities[1];
-      savedCityTwo.textContent = storedCities[2];
-      savedCityThree.textContent = storedCities[3];
-      savedCityFour.textContent = storedCities[4];
-    
+
 // CURRENT WEATHER CODE
 // redefining the variables for the weather with info from the API
   city = data.city.name;
     console.log(city);
 // currentDate doesn't need to be redefined since its date will always be the current day
     console.log(currentDate);
-  temp = data.list[0].main.temp;
+//setting weather values
+  
+    temp = data.list[0].main.temp;
     console.log(temp);
   wind = data.list[0].wind.speed;
     console.log(wind);
@@ -150,6 +110,54 @@ function getWeatherAPI(lat,lon) {
     listEl.appendChild(tempLi);
     listEl.appendChild(windLi);
     listEl.appendChild(humidLi);
+// setting info from current weather
+  function setCityCurrent() {
+    let currentCity = city;
+    let cityDate= currentDate;
+    let cityTemp = temp;
+    let cityWind = wind;
+    let cityHumid = humidity;
+      if (storedCities !== null && storedDates !== null && storedTemps !== null && storedWinds !== null && storedHumids !== null) {
+        storedCities.push(currentCity);
+        storedDates.push(cityDate);
+        storedTemps.push(cityTemp);
+        storedWinds.push(cityWind);
+        storedHumids.push(cityHumid);
+        localStorage.setItem("storedCities", JSON.stringify(storedCities));
+        localStorage.setItem("storedDates", JSON.stringify(storedDates));
+        localStorage.setItem("storedTemps", JSON.stringify(storedTemps));
+        localStorage.setItem("storedWinds", JSON.stringify(storedWinds));
+        localStorage.setItem("storedHumids", JSON.stringify(storedHumids));
+      } else {
+        storedCities = currentCity.attr(data.city.name);
+        storedDates = cityDate.attr(currentDate);
+        storedTemps = cityTemp.attr(data.list[0].main.temp);
+        storedWinds = cityWind.attr(data.list[0].wind.speed);
+        storedHumids = cityHumid.attr(data.list[0].main.humidity)
+        localStorage.setItem("storedCities", JSON.stringify(storedCities));
+        localStorage.setItem("storedDates", JSON.stringify(storedDates));
+        localStorage.setItem("storedTemps", JSON.stringify(storedTemps));
+        localStorage.setItem("storedWinds", JSON.stringify(storedWinds));
+        localStorage.setItem("storedHumids", JSON.stringify(storedHumids));
+      }
+// this bracket closes setCity()
+    };
+setCityCurrent();
+// getting the cities saved to local storage
+    function getCityCurrent() {
+      if (JSON.parse(localStorage.getItem("storedCities")) !== null) {
+        storedCities = JSON.parse(localStorage.getItem("storedCities"));
+// adding the city name to the button
+          savedCityZero.textContent = storedCities[0];
+          savedCityOne.textContent = storedCities[1];
+          savedCityTwo.textContent = storedCities[2];
+          savedCityThree.textContent = storedCities[3];
+          savedCityFour.textContent = storedCities[4];
+// this bracket closes the if/else statement            
+      }
+// this bracket closes getCity()
+    }
+getCityCurrent();
 
 // FIVE DAY FORECAST
 // DAY ONE
