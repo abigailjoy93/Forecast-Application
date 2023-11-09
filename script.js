@@ -28,8 +28,10 @@ let storedTemps = [];
 let storedWinds = [];
 let storedHumids = [];
 let storedDates = [];
-const locationKey = 'a1d8801b155299ee41aad93b310ed9f2';
-const weatherKey = 'd236208c1246d8f26f34c109644f9d1a';
+let locationKey = 'a1d8801b155299ee41aad93b310ed9f2';
+let weatherKey = 'd236208c1246d8f26f34c109644f9d1a';
+let stateCode= "";
+let countryCode = "";
 
 searchButton.addEventListener("click", getLocationAPI);
 
@@ -38,7 +40,7 @@ function getLocationAPI() {
     zipCode = zipCodeEl.val()
   };
 
-  let requestLocation = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${locationKey}`;
+  let requestLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${zipCodeEl},${stateCode},${countryCode}&appid=${locationKey}`;
     fetch(requestLocation)
       .then(function (response) {
         return response.json();
@@ -59,7 +61,7 @@ function getLocationAPI() {
 
 // Linked Weather API and pulled the weather data using lat, lon from getLocationApi
 function getWeatherAPI(lat,lon) {
-  let requestWeather = `htpps://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherKey}`;
+  let requestWeather = `htpps://api.openweathermap.org/data/2.5/forecast?lat=${lat},&lon=${lon}&units=imperial&appid=${weatherKey}`;
     fetch(requestWeather)
     .then(function (response) {
       return response.json();
