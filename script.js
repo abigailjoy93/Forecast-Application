@@ -28,8 +28,8 @@ let storedTemps = [];
 let storedWinds = [];
 let storedHumids = [];
 let storedDates = [];
-const locationKey = '9dc48332c2885d26742f460b52265f73';
-const weatherKey = 'ad5c638b258d1e192b595462eadfd243';
+const locationKey = 'a1d8801b155299ee41aad93b310ed9f2';
+const weatherKey = 'd236208c1246d8f26f34c109644f9d1a';
 
 searchButton.addEventListener("click", getLocationAPI);
 
@@ -38,7 +38,7 @@ function getLocationAPI() {
     zipCode = zipCodeEl.val()
   };
 
-  let requestLocation = `api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${locationKey}`;
+  let requestLocation = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${locationKey}`;
     fetch(requestLocation)
       .then(function (response) {
         return response.json();
@@ -51,17 +51,6 @@ function getLocationAPI() {
         console.log(lat);
         console.log(lon);
         getWeatherAPI(lat,lon);
-
-        // localStorage.setItem("savedCity", JSON.stringify(zipCodeEl));
-        // renderMessage();
-
-        // function renderMessage() {
-        //   let recentCity = document.createElement('p');
-        //   recentCity = JSON.parse(localStorage.getItem("savedCity"));
-          
-        
-        // for (let i = 0; i < cities.length; i++) {
-        //   document.querySelector(i).append(cities[i].name)
 // This bracket closes line 42  
       });
 // This bracket closes the function
@@ -70,7 +59,7 @@ function getLocationAPI() {
 
 // Linked Weather API and pulled the weather data using lat, lon from getLocationApi
 function getWeatherAPI(lat,lon) {
-  let requestWeather = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherKey}`;
+  let requestWeather = `htpps://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherKey}`;
     fetch(requestWeather)
     .then(function (response) {
       return response.json();
