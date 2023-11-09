@@ -36,9 +36,11 @@ function getLocationAPI() {
   // if the zip code box is not empty, then reassign zipCodeEl as the inputted value
   if (zipCodeEl.val() !== null) {
     zipCode = zipCodeEl.val();
-  } /* closes if if(zipCodeEl) statement */
+  }
+  /* closes if if(zipCodeEl) statement */
+  console.log(zipCode);
   // Requesting location information from the API
-  let requestLocation = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=a1d8801b155299ee41aad93b310ed9f2`;
+  let requestLocation = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=a1d8801b155299ee41aad93b310ed9f2`;
   // fetching the results from the API call
   fetch(requestLocation)
     .then(function (response) {
@@ -46,16 +48,22 @@ function getLocationAPI() {
     }) /* this bracket closes .then(function (response) */
     // turning the results from the API call into usable data
     .then(function (data) {
-      console.log(data);
-      // redefining lat as the latitude provided from the API call
-      lat = data.lat;
-      // redefining lon as the longitude provided from the API call
-      lon = data.lon;
-      // verifying the variables have been reassigned
-      console.log(lat);
-      console.log(lon);
-      // passing the lat and lon to the getWeeatherAPI
-      getWeatherAPI(lat, lon);
+      try {
+        if (data !== null) {
+          console.log(data);
+          // redefining lat as the latitude provided from the API call
+          lat = data.lat;
+          // redefining lon as the longitude provided from the API call
+          lon = data.lon;
+          // verifying the variables have been reassigned
+          console.log(lat);
+          console.log(lon);
+          // passing the lat and lon to the getWeeatherAPI
+          getWeatherAPI(lat, lon);
+        } /* close the if statement */
+      } /* close the try statment */ catch (error) {
+        console.log("Error:" + error);
+      } /* closes the error catch */
     }); /* closes .then(function(data)) */
 } /* closes getLocationAPI function */
 
@@ -63,7 +71,7 @@ function getLocationAPI() {
 function getWeatherAPI(lat, lon) {
   // API key for the forecast API
   // calling to the weather API
-  let requestWeather = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d236208c1246d8f26f34c109644f9d1a`;
+  let requestWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d236208c1246d8f26f34c109644f9d1a`;
   // fetching the results of the call
   fetch(requestWeather)
     .then(function (response) {
@@ -71,7 +79,13 @@ function getWeatherAPI(lat, lon) {
     }) /* this closes  .then(function (response)*/
     // turning the results from the API call into usable data
     .then(function (data) {
-      console.log(data);
+      try {
+        if (data !== null) {
+          console.log(data);
+        } /* closes the if statement */
+      } /* closes the try statement */ catch (error) {
+        console.log("Error: " + error);
+      } /* closes the error catch */
       // CURRENT WEATHER CODE
       // redefining the variables for the weather with info from the API
       city = data.city.name;
@@ -280,7 +294,6 @@ function getWeatherAPI(lat, lon) {
       dayFiveList.appendChild(dayFiveTemp);
       dayFiveList.appendChild(dayFiveWind);
       dayFiveList.appendChild(dayFiveHumid);
-      function resetFunction(event) {}
       // This bracket and parentheses closes line 69
     });
   return;
