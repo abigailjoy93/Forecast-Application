@@ -36,7 +36,7 @@ function getLocationAPI() {
     zipCode = zipCodeEl.val()
   };
 
-  let requestLocation = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=9dc48332c2885d26742f460b52265f73`;
+  let requestLocation = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=9dc48332c2885d26742f460b52265f73`;
     fetch(requestLocation)
       .then(function (response) {
         return response.json();
@@ -68,7 +68,7 @@ function getLocationAPI() {
 
 // Linked Weather API and pulled the weather data using lat, lon from getLocationApi
 function getWeatherAPI(lat,lon) {
-  let requestWeather = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=ad5c638b258d1e192b595462eadfd243`;
+  let requestWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=ad5c638b258d1e192b595462eadfd243`;
     fetch(requestWeather)
     .then(function (response) {
       return response.json();
