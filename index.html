@@ -25,9 +25,11 @@
         <div class="searchBox column is-3">
         <div class="box has-text-centered">
           <h1>Search Box</h1>
-          <div class="input"></div>
+          <div>
+            <textarea class="textarea" id="zipcode" placeholder="Zip Code" rows="1"></textarea>
+          </div>
           <button
-            class="button is-fullwidth is-outlined"
+            class="searchButton is-fullwidth is-outlined" id="searchButton"
             type="submit"
             value="Submit input"
           >
@@ -35,11 +37,11 @@
           </button>
         </div>
         <div class="buttons">
-          <div class="button is-small is-fullwidth" id="cityOne">city 1</div>
-          <div class="button is-small is-fullwidth" id="cityTwo">city 2</div>
-          <div class="button is-small is-fullwidth" id="cityThree">city 3</div>
-          <div class="button is-small is-fullwidth" id="cityFour">city 4</div>
-          <div class="button is-small is-fullwidth" id="cityFive">city 5</div>
+          <div class="button is-small is-fullwidth" id="b0"></div>
+          <div class="button is-small is-fullwidth" id="b1"></div>
+          <div class="button is-small is-fullwidth" id="b2"></div>
+          <div class="button is-small is-fullwidth" id="b3"></div>
+          <div class="button is-small is-fullwidth" id="b4"></div>
         </div>
         </div>
         </div>
@@ -47,6 +49,7 @@
     <div class="column has-text-centered">
       <div class="currentWeather">
         <h1>Current weather</h1>
+        <div class="section" id="currentWeather"></div>
       </div>
     
 
@@ -56,24 +59,27 @@
         </div>
         <div class="columns">
             <div class="column">
-                <div class="box">day 1</div>
+                <div class="box" id="day-1"></div>
             </div>
             <div class="column">
-                <div class="box">day 2</div>
+                <div class="box" id="day-2"></div>
             </div>
             <div class="column">
-                <div class="box">day 3</div>
+                <div class="box" id="day-3"></div>
             </div>
             <div class="column">
-                <div class="box">day 4</div>
+                <div class="box" id="day-4"></div>
             </div>
             <div class="column">
-                <div class="box">day 5</div>
+                <div class="box" id="day-5"></div>
             </div>
         </div>
         </div>
     </div>
 </section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script defer type="text/javascript" src="./script.js"></script>
 
   </body>
 </html>
